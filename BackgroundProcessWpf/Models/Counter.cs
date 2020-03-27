@@ -1,17 +1,29 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading;
 
 namespace BackgroundProcessWpf.Models
 {
-    public class Counter
+    public class Counter : INotifyPropertyChanged
     {
         private int _initialCount;
         private bool _running = true;
+        private int _count;
         private BackgroundWorker _backgroundWorker;
-        public int Count { get; set; }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        public int Count 
+        {
+            get { return _count; }
+            set 
+            { 
+                _count = value;
+                OnPropertyChanged();
+            } 
+        }
 
         public Counter(int initialCount)
         {
@@ -49,6 +61,11 @@ namespace BackgroundProcessWpf.Models
                 Increment(amount);
                 Thread.Sleep(1000);
             }
+        }
+
+        protected void OnPropertyChanged([CallerMemberName] string name = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
         }
     }
 }
