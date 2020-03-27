@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BackgroundProcessWpf.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +21,13 @@ namespace BackgroundProcessWpf
     /// </summary>
     public partial class MainWindow : Window
     {
+        public MainWindowViewModel ViewModel { get; set; }
+
         public MainWindow()
         {
             InitializeComponent();
+            ViewModel = new MainWindowViewModel();
+            DataContext = ViewModel;
         }
     }
 }

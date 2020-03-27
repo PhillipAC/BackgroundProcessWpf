@@ -4,7 +4,7 @@ using System.Text;
 
 namespace BackgroundProcessWpf.Models
 {
-    class Counter
+    public class Counter
     {
         private int _initialCount;
         public int Count { get; set; }

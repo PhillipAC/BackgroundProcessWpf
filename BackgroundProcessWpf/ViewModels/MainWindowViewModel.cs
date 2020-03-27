@@ -8,7 +8,7 @@ namespace BackgroundProcessWpf.ViewModels
     /// <summary>
     /// The ViewModel of the MainWindow view.
     /// </summary>
-    class MainWindowViewModel
+    public class MainWindowViewModel
     {
         public Counter Model { get; set; }
 
