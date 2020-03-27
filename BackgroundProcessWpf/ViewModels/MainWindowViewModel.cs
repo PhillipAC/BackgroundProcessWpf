@@ -1,4 +1,5 @@
 ﻿using BackgroundProcessWpf.Models;
+using Prism.Commands;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -11,6 +12,7 @@ namespace BackgroundProcessWpf.ViewModels
     public class MainWindowViewModel
     {
         public Counter Model { get; set; }
+        public DelegateCommand ResetCounter { get; set; }
 
         /// <summary>
         /// Initialization of the Counter
@@ -18,6 +20,8 @@ namespace BackgroundProcessWpf.ViewModels
         public MainWindowViewModel()
         {
             Model = new Counter(0);
+
+            ResetCounter = new DelegateCommand(ExecuteResetCounter, CanExecuteResetCounter);
         }
 
         /// <summary>
